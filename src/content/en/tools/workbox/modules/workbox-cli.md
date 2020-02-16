@@ -3,7 +3,7 @@ book_path: /web/tools/workbox/_book.yaml
 description: The module guide for workbox-cli.
 
 {# wf_blink_components: N/A #}
-{# wf_updated_on: 2018-03-15 #}
+{# wf_updated_on: 2020-01-17 #}
 {# wf_published_on: 2017-11-27 #}
 
 # Workbox CLI  {: .page-title }
@@ -169,41 +169,10 @@ automatically by `workbox wizard` or tweaked manually.
 
 ### Options used by `generateSW`
 
-Below is a list of options used by **just** the `generateSW` command.
-
-<table class="responsive">
-  <tbody>
-    <tr>
-      <th colspan="2">These options only apply to `generateSW`.</th>
-    </tr>
-{% include "web/tools/workbox/_shared/config/groups/common-generate-schema.html" %}
-  </tbody>
-</table>
+A full set of configuration options can be found on
+[this reference page](/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW).
 
 ### Options used by `injectManifest`
 
-Below is a list of options used by **just** the `injectManifest` command.
-
-<table class="responsive">
-  <tbody>
-    <tr>
-      <th colspan="2">These options only apply to `injectManifest`.</th>
-    </tr>
-{% include "web/tools/workbox/_shared/config/groups/common-inject-schema.html" %}
-{% include "web/tools/workbox/_shared/config/groups/build-inject-schema.html" %}
-  </tbody>
-</table>
-
-### Options used by both
-
-The remaining options are used by both commands.
-
-<table class="responsive">
-  <tbody>
-    <tr>
-      <th colspan="2">Used by both `generateSW` and `injectManifest`.</th>
-    </tr>
-{% include "web/tools/workbox/_shared/config/single/swDest.html" %}
-{% include "web/tools/workbox/_shared/config/groups/base-schema.html" %}
-  </tbody>
-</table>
+A full set of configuration options can be found on
+[this reference page](/web/tools/workbox/reference-docs/latest/module-workbox-build#.injectManifest).

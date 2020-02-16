@@ -25,7 +25,7 @@ landing_page:
 
       <p class="devsite-landing-row-description">JavaScript Libraries for adding offline support to web apps</p>
 
-      <p><a class="button button-primary" href="/web/tools/workbox/guides/get-started">Get Started</a></p>
+      <p><a class="button button-primary" href="/web/tools/workbox/guides/get-started">Get started</a></p>
       </div>
 
   - background: grey
@@ -34,7 +34,7 @@ landing_page:
         Welcome, Workbox is a set of libraries and Node modules that make it
         easy to cache assets and take full advantage of features used to
         build
-        <a href="https://developers.google.com/web/progressive-web-apps/">progressive web app's</a>.
+        <a href="https://developers.google.com/web/progressive-web-apps/">Progressive Web Apps</a>.
 
   - custom_html: >
       <style>
@@ -136,10 +136,35 @@ landing_page:
       cache.</p>
 
       <pre class="prettyprint lang-javascript">
-      workbox.routing.registerRoute(
-        new RegExp('^https://fonts.(?:googleapis|gstatic).com/(.*)'),
-        workbox.strategies.cacheFirst(),
-      );
+        import {registerRoute} from 'workbox-routing';
+        import {CacheFirst, StaleWhileRevalidate} from 'workbox-strategies';
+        import {CacheableResponsePlugin} from 'workbox-cacheable-response';
+        import {ExpirationPlugin} from 'workbox-expiration';
+
+        // Cache the Google Fonts stylesheets with a stale while revalidate strategy.
+        registerRoute(
+          /^https:\/\/fonts\.googleapis\.com/,
+          new StaleWhileRevalidate({
+            cacheName: 'google-fonts-stylesheets',
+          }),
+        );
+
+
+        // Cache the Google Fonts webfont files with a cache first strategy for 1 year.
+        registerRoute(
+          /^https:\/\/fonts\.gstatic\.com/,
+          new CacheFirst({
+            cacheName: 'google-fonts-webfonts',
+            plugins: [
+              new CacheableResponsePlugin({
+                statuses: [0, 200],
+              }),
+              new ExpirationPlugin({
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+              }),
+            ],
+          }),
+        );
       </pre>
 
       <h3>Cache JavaScript and CSS</h3>
@@ -147,10 +172,10 @@ landing_page:
       while making sure they are updated in the background for the next use.</p>
 
       <pre class="prettyprint lang-javascript">
-      workbox.routing.registerRoute(
-        /\.(?:js|css)$/,
-        workbox.strategies.staleWhileRevalidate(),
-      );
+        import {registerRoute} from 'workbox-routing';
+        import {StaleWhileRevalidate} from 'workbox-strategies';
+
+        registerRoute(/\.(?:js|css)$/, new StaleWhileRevalidate());
       </pre>
 
       <h3>Cache Images</h3>
@@ -159,18 +184,22 @@ landing_page:
       them indefinitely, consuming your users' storage.</p>
 
       <pre class="prettyprint lang-javascript">
-      workbox.routing.registerRoute(
-        /\.(?:png|gif|jpg|jpeg|svg)$/,
-        workbox.strategies.cacheFirst({
-          cacheName: 'images',
-          plugins: [
-            new workbox.expiration.Plugin({
-              maxEntries: 60,
-              maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-            }),
-          ],
-        }),
-      );
+        import {registerRoute} from 'workbox-routing';
+        import {CacheFirst} from 'workbox-strategies';
+        import {ExpirationPlugin} from 'workbox-expiration';
+
+        registerRoute(
+          /\.(?:png|gif|jpg|jpeg|svg)$/,
+          new CacheFirst({
+            cacheName: 'images',
+            plugins: [
+              new ExpirationPlugin({
+                maxEntries: 60,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+              }),
+            ],
+          }),
+        );
       </pre>
 
       <h3>Precache your Files</h3>
@@ -180,29 +209,32 @@ landing_page:
       <div class="ds-selector-tabs">
         <section>
           <div class="kd-tabbutton">CLI</div>
-          <pre class="prettyprint lang-javascript">workbox wizard</pre>
+          <pre class="prettyprint lang-javascript">
+        workbox wizard</pre>
         </section>
         <section>
           <div class="kd-tabbutton">Node Module</div>
-          <pre class="prettyprint lang-javascript">const workboxBuild = require('workbox-build');
-      workboxBuild.generateSW({
-        swDest: './build/sw.js'
-        globDirectory: './app',
-        globPatterns: '**\/*.{js,css,html,png}',
-      });</pre>
+          <pre class="prettyprint lang-javascript">
+        const {generateSW} = require('workbox-build');
+
+        generateSW({
+          swDest: './build/sw.js',
+          globDirectory: './app',
+          globPatterns: '**/*.{js,css,html,png}',
+        });</pre>
         </section>
         <section>
           <div class="kd-tabbutton">webpack</div>
-          <pre class="prettyprint lang-javascript">const WorkboxPlugin = require('workbox-webpack-plugin');
+          <pre class="prettyprint lang-javascript">
+        const {GenerateSW} = require('workbox-webpack-plugin');
 
-      // webpack config
-
-      {
-        plugins: [
-          // Other webpack plugins...
-          new WorkboxPlugin()
-        ]
-      }</pre>
+        module.exports = {
+          // Other webpack config...
+          plugins: [
+            // Other plugins...
+            new GenerateSW(),
+          ]
+        };</pre>
         </section>
       </div>
 
@@ -210,7 +242,9 @@ landing_page:
       <p>Want offline analytics for your offline PWA? No problem.</p>
 
       <pre class="prettyprint lang-javascript">
-      workbox.googleAnalytics.initialize();
+        import * as googleAnalytics from 'workbox-google-analytics';
+
+        googleAnalytics.initialize();
       </pre>
 
   - heading: "Workbox @ Chrome Dev Summit"
@@ -224,7 +258,7 @@ landing_page:
         Pinterest and WIRED are using Workbox in production.
       youtube_id: DtuJ55tmjps
 
-  - heading: "Who's Using Workbox?"
+  - heading: "Who's using Workbox?"
     description: >
       <style>
       .using-workbox {
@@ -247,6 +281,7 @@ landing_page:
 
       <div><img src="./images/third_party/logos/forbes.png" alt="Forbes Logo" /></div>
       <div><img src="./images/third_party/logos/iheartradio.png" alt="iHeart Radio Logo" /></div>
+      <div><img src="./images/third_party/logos/bbva.png" alt="BBVA Logo" /></div>
       <div><img src="./images/third_party/logos/tinder.png" alt="Tinder Logo" /></div>
       </div>
 
@@ -255,12 +290,12 @@ landing_page:
     - custom_html: >
         <div style="width: 100%; text-align: center;">
           <h2>Learn how to use Workbox</h2>
-          <p><a class="button button-primary" href="/web/tools/workbox/guides/get-started">Get Started</a></p>
+          <p><a class="button button-primary" href="/web/tools/workbox/guides/get-started">Get started</a></p>
         </div>
 
   - heading: "Contributors"
     description: >
-      <p>Workbox is built and maintained by friendly bunch of contributors
+      <p>Workbox is built and maintained by a friendly bunch of contributors
       without whom none of this would be possible.</p>
 
       {% include 'web/tools/workbox/_shared/contributors.html' %}

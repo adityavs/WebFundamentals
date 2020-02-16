@@ -2,7 +2,7 @@ project_path: /web/_project.yaml
 book_path: /web/updates/_book.yaml
 description: Search across network headers, copy requests as fetch, audit pages using desktop conditions, and much more.
 
-{# wf_updated_on: 2018-04-11 #}
+{# wf_updated_on: 2019-09-19 #}
 {# wf_published_on: 2018-04-11 #}
 {# wf_tags: chrome67,devtools,devtools-whatsnew #}
 {# wf_featured_image: /web/updates/images/generic/chrome-devtools.png #}
@@ -14,8 +14,6 @@ description: Search across network headers, copy requests as fetch, audit pages 
 # What's New In DevTools (Chrome 67) {: .page-title }
 
 {% include "web/_shared/contributors/kaycebasques.html" %}
-
-Note: The video version of these release notes will be published around early June 2018.
 
 New features and major changes coming to DevTools in Chrome 67 include:
 
@@ -30,6 +28,14 @@ New features and major changes coming to DevTools in Chrome 67 include:
 * [Dark theme updates](#dark)
 * [Certificate transparency information in the **Security** panel](#security)
 * [Site isolation features in the **Performance** panel](#site-isolation)
+
+[Video version of the release notes](https://youtu.be/4EdPq9Nw6uI):
+
+<div class="video-wrapper-full-width">
+  <iframe class="devsite-embedded-youtube-video" data-video-id="4EdPq9Nw6uI"
+          data-autohide="1" data-showinfo="0" frameborder="0" allowfullscreen>
+  </iframe>
+</div>
 
 Note: Check what version of Chrome you're running at `chrome://version`. If you're running
 an earlier version, these features won't exist. If you're running a later version, these features
@@ -184,7 +190,7 @@ an infinite loop by mistake while developing your site. To stop the infinite loo
   <iframe class="devsite-embedded-youtube-video" data-video-id="haFYwEBjaTo"
           data-autohide="1" data-showinfo="0" frameborder="0" allowfullscreen>
   </iframe>
-</div> 
+</div>
 
 In the video above, the clock is being updated via a `setInterval()` timer. Clicking
 **Start Infinite Loop** runs a `do...while` loop that never stops. The interval resumes because
@@ -290,11 +296,15 @@ a flame chart for each process so that you can see the total work that each proc
 
 ## Feedback {: #feedback }
 
+That's all for Chrome 67!
+
+To discuss the new features and changes in this post, or anything else related to DevTools:
+
 * File bug reports at [Chromium Bugs](https://crbug.com){:.external}.
-* Discuss features and changes on the [Mailing List][ML]{:.external}. Please don't use this
-  channel for support questions. Use Stack Overflow, instead.
+* Discuss features and changes on the [Mailing List][ML]{:.external}. Please don't use the mailing
+  list for support questions. Use Stack Overflow, instead.
 * Get help on how to use DevTools on [Stack Overflow][SO]{:.external}. Please don't file bugs
-  here. Use Chromium Bugs, instead.
+  on Stack Overflow. Use Chromium Bugs, instead.
 * Tweet us at [@ChromeDevTools](https://twitter.com/chromedevtools).
 * File bugs on this doc in the [Web Fundamentals][WF]{:.external} repository.
 
@@ -314,11 +324,4 @@ fixed within a day. You can go back to using Chrome Stable while Canary is broke
 
 [canary]: https://www.google.com/chrome/browser/canary.html
 
-## Previous release notes {: #links }
-
-See the [devtools-whatsnew][tag] tag for links to all previous DevTools
-release notes.
-
-[tag]: /web/updates/tags/devtools-whatsnew
-
-{% include "web/_shared/rss-widget-updates.html" %}
+<<../../_shared/discover.md>>

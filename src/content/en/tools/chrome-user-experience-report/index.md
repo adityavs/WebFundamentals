@@ -1,13 +1,13 @@
 project_path: /web/tools/_project.yaml
 book_path: /web/tools/_book.yaml
 
-{# wf_updated_on: 2018-01-24 #}
+{# wf_updated_on: 2020-02-11 #}
 {# wf_published_on: 2017-10-23 #}
 {# wf_blink_components: N/A #}
 
 # Chrome User Experience Report {: .page-title }
 
-<img src="images/dataset.png" class="attempt-right" alt="">
+<img src="images/logo.png" class="attempt-right" alt="CrUX logo" style="max-width: 250px">
 
 The Chrome User Experience Report provides user experience metrics for how 
 real-world Chrome users experience popular destinations on the web.
@@ -90,6 +90,54 @@ Defined by the [HTML specification](https://html.spec.whatwg.org/#event-load):
 finished loading.” - 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/Events/load).
 
+#### First Input Delay {: #first-input-delay }
+
+> “First Input Delay (FID) is an important, user-centric metric for measuring load responsiveness 
+because it quantifies the experience users feel when trying to interact with unresponsive pages—a 
+low FID helps ensure that the page is usable.” -
+[web.dev/fid/](https://web.dev/fid/)
+
+#### Largest Contentful Paint {: #largest-contentful-paint }
+
+> “Largest Contentful Paint (LCP) is an important, user-centric metric for measuring perceived 
+load speed because it marks the point in the page load timeline when the page's main content has 
+likely loaded—a fast LCP helps reassure the user that the page is useful.” -
+[web.dev/lcp/](https://web.dev/lcp/)
+
+#### Cumulative Layout Shift {: #cumulative-layout-shift }
+
+> “Cumulative Layout Shift (CLS) is an important, user-centric metric for measuring visual 
+stability because it helps quantify how often users experience unexpected layout shifts—a low CLS 
+helps ensure that the page is delightful.” -
+[web.dev/cls/](https://web.dev/cls/)
+
+#### Time to First Byte {: #time-to-first-byte }
+
+> “Time to first byte (TTFB) is a measurement used as an indication of the responsiveness of a 
+webserver or other network resource. TTFB measures the duration from the user or client making an 
+HTTP request to the first byte of the page being received by the client's browser. This time is 
+made up of the socket connection time, the time taken to send the HTTP request, and the time taken 
+to get the first byte of the page.” -
+[Wikipedia](https://en.wikipedia.org/wiki/Time_to_first_byte)
+
+#### Notification Permissions
+
+Defined by the [Notifications API](https://notifications.spec.whatwg.org/) and explained by [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API):
+
+> “The Notifications API allows web pages to control the display of system notifications to the end user. These are outside the top-level browsing context viewport, so therefore can be displayed even when the user has switched tabs or moved to a different app. The API is designed to be compatible with existing notification systems, across different platforms.” -
+[MDN](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API)
+
+Chrome will show users a prompt to grant the active website permission to show notifications when initiated by the website. Users can take actively or passively take one of four actions:
+
+- Accept
+    - If the user has explicitly allowed the website to show them notifications.
+- Deny
+    - If the user has explicitly disallowed the website from showing them notifications.
+- Dismiss
+    - If the user closes the permission prompt without giving any explicit response.
+- Ignore
+    - If the user does not interact with the prompt at all.
+
 ### Dimensions {: #dimensions }
 
 Performance of web content can vary significantly based on device type, 
@@ -111,7 +159,7 @@ bandwidth values based on real user measurement observations.”
 #### Device Type {: #device-type }
 
 Coarse device classification (“phone”, “tablet”, or “desktop”), as 
-[communicated via User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent#Mobile_Tablet_or_Desktop).
+[communicated via User-Agent](https://developer.chrome.com/multidevice/user-agent).
 
 #### Country
 
@@ -234,8 +282,8 @@ aggregated from Chrome users who have opted-in to syncing their browsing
 history, have not set up a Sync passphrase, and have usage statistic reporting 
 enabled. This population may not be representative of the broader user base 
 for a particular origin and many origins may have population differences among 
-each other. Further, this data does not account for users with different 
-browsers. 
+each other. Further, this data does not account for users with different
+browsers and differences in browser adoption in different geographic regions.
 
 As a result, be careful with the types of conclusions being drawn when looking 
 at a cross-section of origins, and when comparing individual origins: avoid 
@@ -247,3 +295,8 @@ the sections above.
 We would love to hear your feedback, questions, and suggestions to help us 
 improve the Chrome User Experience Report. Please join the conversation on our 
 [public Google Group](https://groups.google.com/a/chromium.org/forum/#!forum/chrome-ux-report).
+
+## License
+
+"Chrome User Experience Report" datasets by Google are licensed under a 
+[Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

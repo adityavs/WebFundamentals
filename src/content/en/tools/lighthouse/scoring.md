@@ -1,15 +1,20 @@
 project_path: /web/tools/_project.yaml
 book_path: /web/tools/_book.yaml
-description: A guide on how scoring works in Lighthouse.
+description: A guide on how scoring works in Lighthouse v2.
 
-{# wf_updated_on: 2018-01-03 #}
+{# wf_updated_on: 2018-11-04 #}
 {# wf_published_on: 2017-12-27 #}
 {# wf_blink_components: N/A #}
 
 [details]: https://docs.google.com/spreadsheets/d/1dXH-bXX3gxqqpD1f7rp6ImSOhobsT1gn_GQ2fGZp8UU/edit?ts=59fb61d2#gid=0
 [WikiHow]: https://www.wikihow.com/Calculate-Weighted-Average#Weighted_Averages_without_Percentages_sub
 
-# Lighthouse Scoring Guide {: .page-title }
+# Lighthouse v2 Scoring Guide {: .page-title }
+
+Note: This guide covers how scoring worked in Lighthouse v2. See [Lighthouse Scoring Guide][v3]
+for the latest.
+
+[v3]: /web/tools/lighthouse/v3/scoring
 
 The scores that you see at the top of your Lighthouse report represent the page's score for
 that particular category. This guide explains how Lighthouse calculates those scores.
@@ -62,7 +67,7 @@ a Lighthouse score of 99.
 ### How the Performance score is weighted {: #perf-weighting }
 
 The audits that contribute to the Performance score are not equally weighted. See [Scoring
-Details][details]{:.external} to see how each Performance audit is weighted. The heaver-weighted
+Details][details]{:.external} to see how each Performance audit is weighted. The heavier-weighted
 audits have a larger impact on your overall Performance score. The weightings are based on
 heuristics. The Lighthouse team is working on formalizing this approach through more field data.
 
@@ -123,3 +128,7 @@ Lighthouse returns a Best Practices score between 0 and 100. 0 is the worst poss
 The Best Practices audits are equally weighted. To calculate how much each audit contributes
 to your overall Best Practices score, count the number of Best Practices audits, then divide
 100 by that number.
+
+## Feedback {: #feedback .hide-from-toc }
+
+{% include "web/_shared/helpful.html" %}

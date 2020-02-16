@@ -2,7 +2,7 @@ project_path: /web/fundamentals/_project.yaml
 book_path: /web/fundamentals/_book.yaml
 description: Learn how to use the Cache API to make your application data available offline
 
-{# wf_updated_on: 2017-10-11 #}
+{# wf_updated_on: 2018-09-20 #}
 {# wf_published_on: 2017-10-03 #}
 {# wf_blink_components: Blink>Storage>CacheStorage #}
 
@@ -59,7 +59,7 @@ You can set the MIME type of a `Response` by setting the appropriate header.
 
 ## Working with Response objects
 
-If you have retrieved a `Response` and wish to access it's body, there are several helper methods
+If you have retrieved a `Response` and wish to access its body, there are several helper methods
 you can use. Each returns a `Promise` that resolves with a value of a different type.
 
 <table>
@@ -249,3 +249,6 @@ Where request can be a `Request` or a URL string. This method also takes the sam
 To delete a cache, call `caches.delete(name)`. This function returns a `Promise` that resolves to
 `true` if the cache existed and was deleted, or `false` otherwise.
 
+## Feedback {: #feedback }
+
+{% include "web/_shared/helpful.html" %}
